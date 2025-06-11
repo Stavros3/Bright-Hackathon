@@ -1,0 +1,7 @@
+{
+  "name": "Bright",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
