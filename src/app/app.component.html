@@ -1,3 +1,58 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu *ngIf="!showLoader" side="start" swipeGesture="false" contentId="main-content">
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+            <ion-label>
+              Stavros Oikonomidis
+              <br />
+              s.oikonomidis37&#64;gmail.com
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/home" routerDirection="root" detail="false">
+            <ion-label>Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/home" routerDirection="root" detail="false">
+            <ion-label>Leaderboard</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/home" routerDirection="root" detail="false">
+            <ion-label>Friends</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/home" routerDirection="root" detail="false">
+            <ion-icon name="settings-outline" slot="start"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-item>
+          <ion-toggle justify="space-between" aria-label="Toggle dark mode">
+            Dark Mode
+          </ion-toggle>
+        </ion-item>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-menu>
+  <ion-content>
+    <div *ngIf="showLoader"
+      style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+      <img src="assets/loader.webp" alt="Loading" />
+    </div>
+  </ion-content>
+  <ion-router-outlet *ngIf="!showLoader" id="main-content"></ion-router-outlet>
+
 </ion-app>

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Chapters</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onDismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let chapter of chapters" (click)="selectChapter(chapter)">
+      <ion-label>
+        {{ chapter.title }}
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="chapters.length === 0" lines="none">
+      <ion-label>
+        No chapters available.
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
