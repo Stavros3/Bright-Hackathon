@@ -12,7 +12,7 @@
     <ion-list-header *ngIf="chapter.header">
       {{ chapter.header }}
     </ion-list-header>
-    <ion-item *ngIf="chapter.title" (click)="selectChapter(chapter)">
+    <ion-item *ngIf="chapter.title" (click)="chapter.clickable ? selectChapter(chapter) : null">
       <ion-label>
         {{ chapter.title }}
       </ion-label>

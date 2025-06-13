@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IonItem, IonHeader, IonLabel, IonList, IonContent, IonTitle, IonToolbar, IonButtons, IonButton, IonListHeader } from "@ionic/angular/standalone";
 import { ChapterInterface, chapters as sharedChapters } from '../shared/models/chapters.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chapter-modal',
@@ -16,7 +17,7 @@ export class ChapterModalComponent implements OnInit {
 
   chapters = sharedChapters;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,5 +28,7 @@ export class ChapterModalComponent implements OnInit {
 
   selectChapter(chapter: ChapterInterface) {
     console.log('Selected chapter:', chapter.title);
+    this.router.navigate( ['chapter/video']);
+    this.modalCtrl.dismiss();
   }
 }

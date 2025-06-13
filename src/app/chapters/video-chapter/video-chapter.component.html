@@ -1,23 +1,40 @@
-<app-header></app-header>
+<app-header title="Ο ΗΡΑΚΛΗΣ"></app-header>
 <ion-content [fullscreen]="true">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Video Chapter</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <ion-grid>
     <ion-row>
       <ion-col>
-        <p>Video content goes here...</p>
+        <ion-card>
+
+          <ion-card-header>
+            <ion-card-title>Ο ΗΡΑΚΛΗΣ</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium est minima temporibus, voluptatem odit vitae ratione, molestiae at quaerat dignissimos assumenda, ab illum facilis magni alias. Eum temporibus porro dolorem?</p>
+          </ion-card-content>
+          <video width="100%" controls>
+              <source src="assets/video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <ion-card-content>
+              <ion-grid>
+                <!-- <ion-row>
+                  <ion-col class="ion-text-end">
+                    <ion-button class="circle-help" shape="round">Help</ion-button>
+                  </ion-col>
+                </ion-row> -->
+                <ion-row>
+                  <ion-col class="ion-text-center">
+                    <ion-button (click)="goToSpeedText()" shape="round">Επόμενο</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-footer>
-    <ion-toolbar>
-      <ion-title>Footer</ion-title>
-    </ion-toolbar>
-  </ion-footer>
 </ion-content>
 
 <app-footer></app-footer>

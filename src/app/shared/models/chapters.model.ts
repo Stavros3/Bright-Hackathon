@@ -1,6 +1,7 @@
 export interface ChapterInterface {
   header?: string;
   title?: string;
+  clickable?: boolean;
 };
 
 
@@ -13,7 +14,7 @@ export const chapters: ChapterInterface[] = [
     header: "Η μυθολογία",
     title: "1. Η ΔΗΜΙΟΥΡΓΙΑ ΤΟΥ ΚΟΣΜΟΥ"
   },
-  { title: "2. Ο ΗΡΑΚΛΗΣ" },
+  { title: "2. Ο ΗΡΑΚΛΗΣ", clickable: true },
   { title: "3. Ο ΘΗΣΕΑΣ" },
   { title: "4. Η ΑΡΓΟΝΑΥΤΙΚΗ ΕΚΣΤΡΑΤΕΙΑ" },
   { title: "5. Ο ΤΡΩΙΚΟΣ ΠΟΛΕΜΟΣ" },
