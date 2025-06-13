@@ -1,13 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false" aria-label="Open menu"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
 <ion-content [fullscreen]="true">
   <ion-grid>
@@ -15,7 +6,7 @@
       <ion-col size="6">
         <ion-list>
           <ion-item lines="none">
-            <ion-label>Cources</ion-label>
+            <ion-label>Μαθήματα</ion-label>
           </ion-item>
         </ion-list>
       </ion-col>
@@ -28,103 +19,102 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
-        <ion-card (click)="openChapterModal()">
+      <!-- First card: History -->
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="ion-no-padding" (click)="openChapterModal()">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="assets/cources/history.png" alt="History" style="max-width: 100px; max-height: 100px;">
+          </div>
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-title>Ιστορία</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            This is a simple card with some content.
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card>
+      <!-- Example for another card with image, repeat as needed for each available image -->
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="ion-no-padding">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="assets/cources/agglika.png" alt="Math" style="max-width: 100px; max-height: 100px;">
+          </div>
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-title>Αγγλικά</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            This is a simple card with some content.
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card>
+
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="ion-no-padding">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="assets/cources/anthologio.png" alt="Math" style="max-width: 100px; max-height: 100px;">
+          </div>
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-title>Ανθολόγιο</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            This is a simple card with some content.
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="ion-no-padding">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="assets/cources/glossa.png" alt="Math" style="max-width: 100px; max-height: 100px;">
+          </div>
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-title>Γλώσσα</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            This is a simple card with some content.
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="ion-no-padding">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="assets/cources/ikastika.png" alt="Math" style="max-width: 100px; max-height: 100px;">
+          </div>
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-title>Εικαστικά</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            This is a simple card with some content.
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card>
+      <ion-col size="6">
+        <ion-card class="ion-no-padding">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="assets/cources/mathimatika.png" alt="Math" style="max-width: 100px; max-height: 100px;">
+          </div>
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-title>Μαθηματικά</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            This is a simple card with some content.
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="ion-no-padding">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="assets/cources/meleti-perivalodos.png" alt="Math" style="max-width: 100px; max-height: 100px;">
+          </div>
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-title>Μελέτη Περιβάλλοντος</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            This is a simple card with some content.
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card>
+      <ion-col size="6" class="ion-no-padding">
+        <ion-card class="ion-no-padding">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="assets/cources/mousiki.png" alt="Math" style="max-width: 100px; max-height: 100px;">
+          </div>
           <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
+            <ion-card-title>Μουσική</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            This is a simple card with some content.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            This is a simple card with some content.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            This is a simple card with some content.
           </ion-card-content>
         </ion-card>
       </ion-col>
