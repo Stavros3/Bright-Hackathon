@@ -1,29 +1,46 @@
 <app-header title="Ο ΗΡΑΚΛΗΣ"></app-header>
 <ion-content [fullscreen]="true">
   <ion-grid>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col size="12">
-        box
+        <ion-card>
+          <ion-card-content>
+            <p>{{ paragraph }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-card>
+          <ion-card-content>
+            <form [formGroup]="wordForm">
+              <ion-input
+                formControlName="word"
+                readonly="true"
+                style="font-size:2rem; text-align:center; width: 100%; margin: 0 auto;"
+              ></ion-input>
+            </form>
+          </ion-card-content>
+        </ion-card>
+
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col class="ion-text-center">
-        <ion-card>
-                      <ion-card-content>
-              <ion-grid>
-                <!-- <ion-row>
-                  <ion-col class="ion-text-end">
-                    <ion-button class="circle-help" shape="round">Help</ion-button>
-                  </ion-col>
-                </ion-row> -->
-                <ion-row>
-                  <ion-col class="ion-text-center">
-                    <ion-button shape="round">Επόμενο</ion-button>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card-content>
-          </ion-card>
+        <ion-button color="primary" (click)="start()" [disabled]="isPlaying">▶️ Έναρξη</ion-button>
+        <ion-button color="danger" (click)="stop()" [disabled]="!isPlaying">⏹️ Σταμάτημα</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-grid>
+              <ion-row>
+                <ion-col class="ion-text-center">
+                  <ion-button shape="round">Επόμενο</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
       </ion-col>
     </ion-row>
   </ion-grid>

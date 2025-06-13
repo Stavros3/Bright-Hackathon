@@ -12,5 +12,9 @@ export const chaptersRoutes: Routes = [
   {
     path: 'speed-text',
     loadComponent: () => import('./speed-text-chapter/speed-text-chapter.component').then(m => m.SpeedTextChapterComponent)
+  },
+  {
+    path: 'quiz',
+    loadComponent: () => import('./quiz-chapter/quiz-chapter.component').then(m => m.QuizChapterComponent)
   }
 ];
