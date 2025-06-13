@@ -6,7 +6,8 @@ import { firstValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class AiChatService {
-  private apiKey = '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'; // Replace with your actual API key
+  private apiKey = 'add secret here'; // Replace with your actual API key
+  //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
   private apiUrl = 'https://api.openai.com/v1/chat/completions';
 
   constructor(private http: HttpClient) {}
