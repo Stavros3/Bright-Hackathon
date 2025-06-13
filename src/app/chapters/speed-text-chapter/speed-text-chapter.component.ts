@@ -4,6 +4,7 @@ import { FooterComponent } from "../../shared/footer/footer.component";
 import { HeaderComponent } from "../../shared/header/header.component";
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-speed-text-chapter',
@@ -33,7 +34,7 @@ export class SpeedTextChapterComponent implements OnInit {
   });
   selectedVoice: SpeechSynthesisVoice | null = null;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.words = this.paragraph.split(/\s+/);
@@ -98,5 +99,10 @@ export class SpeedTextChapterComponent implements OnInit {
       };
       window.speechSynthesis.speak(this.speechSynthesisUtterance);
     }
+  }
+
+  goToQuiz() {
+    this.stop();
+    this.router.navigate( ['chapter/quiz']);
   }
 }
