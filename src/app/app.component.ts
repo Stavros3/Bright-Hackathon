@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet, IonContent, IonSpinner, IonList, IonItem, IonToggle, IonMenuToggle, IonMenu, IonAvatar, IonLabel, IonIcon, IonFooter, IonToolbar, IonTitle } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { settingsOutline } from 'ionicons/icons';
+import { settingsOutline, chevronUpCircle } from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { settingsOutline } from 'ionicons/icons';
 export class AppComponent {
   showLoader = true;
   constructor() {
-    addIcons({ settingsOutline });
+    addIcons({ settingsOutline, chevronUpCircle });
     setTimeout(() => {
       this.showLoader = false;
     }, 3000);
