@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { IonContent, IonButton, IonGrid, IonRow, IonCol, IonText, IonList, IonItem } from "@ionic/angular/standalone";
+import { IonContent, IonButton, IonGrid, IonRow, IonCol, IonText, IonList, IonItem, ModalController, IonFab, IonFabButton, IonIcon } from "@ionic/angular/standalone";
 import { HeaderComponent } from "../../shared/header/header.component";
 import { quizzes, QuizInterface } from '../../shared/models/quiz.model';
 import { CommonModule } from '@angular/common';
+import { AiChatComponent } from 'src/app/ai-chat/ai-chat.component';
 
 @Component({
   selector: 'app-quiz-chapter',
   templateUrl: './quiz-chapter.component.html',
   styleUrls: ['./quiz-chapter.component.scss'],
   standalone: true,
-  imports: [IonItem, IonList, IonText, IonCol, IonRow, IonButton, IonGrid, IonContent, HeaderComponent, CommonModule],
+  imports: [IonIcon, IonFabButton, IonFab, IonItem, IonList, IonText, IonCol, IonRow, IonButton, IonGrid, IonContent, HeaderComponent, CommonModule],
 })
 export class QuizChapterComponent implements OnInit {
   quizList: QuizInterface[] = quizzes;
@@ -19,7 +20,7 @@ export class QuizChapterComponent implements OnInit {
   feedbackMessage = '';
   quizCompleted = false;
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {}
 
@@ -47,4 +48,15 @@ export class QuizChapterComponent implements OnInit {
       this.quizCompleted = true;
     }
   }
+
+      async openAiChatModal() {
+        const modal = await this.modalController.create({
+          component: AiChatComponent,
+          cssClass: 'ai-chat-modal',
+          componentProps: {
+            aiPrompt: 'You are history teacher and you know everything about Hercules. You are answering questions based on Hercules only. You are not allowed to answer any other question. If the user asks something else, you should say "Λυπάμαι, δεν μπορώ να βοηθήσω με αυτό." Your aswers should be on Greek only. You speak simple and your targeting is for childrens with ADHD and Dyslexia. Your response should be on html format.',
+          }
+        });
+        await modal.present();
+      }
 }

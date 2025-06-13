@@ -8,22 +8,16 @@
           <ng-container *ngFor="let row of currentQuiz.options | slice:0:currentQuiz.options.length; let i = index">
             <ion-row *ngIf="i % 2 === 0">
               <ion-col size="6" *ngIf="currentQuiz.options[i]">
-                <ion-button
-                  expand="block"
-                  shape="round"
+                <ion-button expand="block" shape="round"
                   [color]="selectedOption === currentQuiz.options[i] ? 'primary' : 'medium'"
-                  (click)="selectOption(currentQuiz.options[i])"
-                >
+                  (click)="selectOption(currentQuiz.options[i])">
                   {{ currentQuiz.options[i] }}
                 </ion-button>
               </ion-col>
               <ion-col size="6" *ngIf="currentQuiz.options[i+1]">
-                <ion-button
-                  expand="block"
-                  shape="round"
+                <ion-button expand="block" shape="round"
                   [color]="selectedOption === currentQuiz.options[i+1] ? 'primary' : 'medium'"
-                  (click)="selectOption(currentQuiz.options[i+1])"
-                >
+                  (click)="selectOption(currentQuiz.options[i+1])">
                   {{ currentQuiz.options[i+1] }}
                 </ion-button>
               </ion-col>
@@ -42,4 +36,10 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openAiChatModal()">
+      <ion-icon src="assets/idea.svg"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

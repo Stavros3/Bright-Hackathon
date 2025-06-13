@@ -1,3 +1,27 @@
-<p>
-  ai-chat works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>AI Chat</ion-title>
+  </ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-button (click)="onDismiss()">Κλείσιμο</ion-button>
+  </ion-buttons>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="ai-chat-container">
+    <div class="messages">
+      <div *ngFor="let msg of messages" [ngClass]="{'user': msg.role === 'user', 'ai': msg.role === 'ai'}">
+        <strong *ngIf="msg.role === 'user'">Εσύ:</strong>
+        <strong *ngIf="msg.role === 'ai'">AI:</strong>
+        <span *ngIf="msg.role === 'user'">{{ msg.content }}</span>
+        <span *ngIf="msg.role === 'ai'" [innerHTML]="msg.content"></span>
+      </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="sendMessage()" class="input-row">
+      <ion-textarea formControlName="userInput" placeholder="Γράψε το μήνυμά σου..." autoGrow></ion-textarea>
+      <ion-button type="submit" [disabled]="loading || !form.value.userInput" shape="round">
+        Αποστολή
+      </ion-button>
+    </form>
+    <ion-spinner *ngIf="loading"></ion-spinner>
+  </div>
+</ion-content>

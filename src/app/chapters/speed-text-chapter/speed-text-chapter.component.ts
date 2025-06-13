@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { IonContent, IonGrid, IonRow, IonCol, IonButton, IonCard, IonIcon, IonCardContent, IonInput } from "@ionic/angular/standalone";
+import { IonContent, IonGrid, IonRow, IonCol, IonButton, IonCard, IonIcon, IonCardContent, IonInput, IonFab, IonFabButton, ModalController } from "@ionic/angular/standalone";
 import { FooterComponent } from "../../shared/footer/footer.component";
 import { HeaderComponent } from "../../shared/header/header.component";
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AiChatComponent } from 'src/app/ai-chat/ai-chat.component';
 
 @Component({
   selector: 'app-speed-text-chapter',
   templateUrl: './speed-text-chapter.component.html',
   styleUrls: ['./speed-text-chapter.component.scss'],
-  imports: [
+  imports: [IonFabButton, IonFab,
     IonInput, IonCardContent, IonIcon, IonCard, IonButton, IonCol, IonRow, IonGrid, IonContent,
     FooterComponent, HeaderComponent, CommonModule, ReactiveFormsModule
   ]
@@ -34,7 +35,7 @@ export class SpeedTextChapterComponent implements OnInit {
   });
   selectedVoice: SpeechSynthesisVoice | null = null;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modalController: ModalController) { }
 
   ngOnInit() {
     this.words = this.paragraph.split(/\s+/);
@@ -105,4 +106,15 @@ export class SpeedTextChapterComponent implements OnInit {
     this.stop();
     this.router.navigate( ['chapter/quiz']);
   }
+
+    async openAiChatModal() {
+      const modal = await this.modalController.create({
+        component: AiChatComponent,
+        cssClass: 'ai-chat-modal',
+        componentProps: {
+          aiPrompt: 'You are history teacher and you know everything about Hercules. You are answering questions based on Hercules only. You are not allowed to answer any other question. If the user asks something else, you should say "Λυπάμαι, δεν μπορώ να βοηθήσω με αυτό." Your aswers should be on Greek only. You speak simple and your targeting is for childrens with ADHD and Dyslexia. Your response should be on html format.',
+        }
+      });
+      await modal.present();
+    }
 }
