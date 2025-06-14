@@ -4,13 +4,14 @@ import { HeaderComponent } from "../../shared/header/header.component";
 import { quizzes, QuizInterface } from '../../shared/models/quiz.model';
 import { CommonModule } from '@angular/common';
 import { AiChatComponent } from 'src/app/ai-chat/ai-chat.component';
+import { FooterComponent } from "../../shared/footer/footer.component";
 
 @Component({
   selector: 'app-quiz-chapter',
   templateUrl: './quiz-chapter.component.html',
   styleUrls: ['./quiz-chapter.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonFabButton, IonFab, IonItem, IonList, IonText, IonCol, IonRow, IonButton, IonGrid, IonContent, HeaderComponent, CommonModule],
+  imports: [IonIcon, IonFabButton, IonFab, IonText, IonCol, IonRow, IonButton, IonGrid, IonContent, HeaderComponent, CommonModule, FooterComponent],
 })
 export class QuizChapterComponent implements OnInit {
   quizList: QuizInterface[] = quizzes;

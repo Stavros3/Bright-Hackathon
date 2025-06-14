@@ -8,6 +8,7 @@
 </ion-header>
 <ion-content class="ion-padding">
   <div class="ai-chat-container">
+
     <div class="messages">
       <div *ngFor="let msg of messages" [ngClass]="{'user': msg.role === 'user', 'ai': msg.role === 'ai'}">
         <strong *ngIf="msg.role === 'user'">Εσύ:</strong>
@@ -22,6 +23,11 @@
         Αποστολή
       </ion-button>
     </form>
+        <div *ngIf="!isGameMode" style="margin-bottom: 1em;">
+      <ion-button expand="block" color="primary" (click)="setGameMode()">
+        Παίξε Παιχνίδια Μυστηρίου
+      </ion-button>
+    </div>
     <ion-spinner *ngIf="loading"></ion-spinner>
   </div>
 </ion-content>

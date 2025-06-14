@@ -14,23 +14,28 @@
             </ion-label>
           </ion-item>
         </ion-menu-toggle>
+                <ion-menu-toggle>
+          <ion-item lines="none" button [routerLink]="['/home']" routerDirection="root" detail="false">
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
         <ion-menu-toggle>
-          <ion-item lines="none" routerLink="/home" routerDirection="root" detail="false">
+          <ion-item lines="none" routerDirection="root" detail="false">
             <ion-label>Profile</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
-          <ion-item lines="none" routerLink="/home" routerDirection="root" detail="false">
+          <ion-item lines="none" [routerLink]="['/leaderboards']" routerDirection="root" detail="false">
             <ion-label>Leaderboard</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
-          <ion-item lines="none" routerLink="/home" routerDirection="root" detail="false">
+          <ion-item lines="none" routerDirection="root" detail="false">
             <ion-label>Friends</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
-          <ion-item lines="none" routerLink="/home" routerDirection="root" detail="false">
+          <ion-item lines="none" routerDirection="root" detail="false">
             <ion-icon name="settings-outline" slot="start"></ion-icon>
             <ion-label>Settings</ion-label>
           </ion-item>

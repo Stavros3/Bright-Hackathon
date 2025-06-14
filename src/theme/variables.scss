@@ -1,2 +1,74 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+:root {
+  /* Main theme colors */
+  --ion-color-primary: #23caff;      /* έντονο κυανό */
+  --ion-color-primary-rgb: 35,202,255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #1fb2e0;
+  --ion-color-primary-tint: #39d0ff;
+
+  --ion-color-secondary: #92c8fd;    /* παστέλ μπλε */
+  --ion-color-secondary-rgb: 146,200,253;
+  --ion-color-secondary-contrast: #414444;
+  --ion-color-secondary-contrast-rgb: 65,68,68;
+  --ion-color-secondary-shade: #80b2e0;
+  --ion-color-secondary-tint: #a1d0fd;
+
+  --ion-color-tertiary: #d0bff5;     /* παστέλ λιλά/μωβ */
+  --ion-color-tertiary-rgb: 208,191,245;
+  --ion-color-tertiary-contrast: #414444;
+  --ion-color-tertiary-contrast-rgb: 65,68,68;
+  --ion-color-tertiary-shade: #bca9dc;
+  --ion-color-tertiary-tint: #d8c8f7;
+
+  --ion-color-success: #cbe269;      /* παστέλ lime πράσινο */
+  --ion-color-success-rgb: 203,226,105;
+  --ion-color-success-contrast: #414444;
+  --ion-color-success-contrast-rgb: 65,68,68;
+  --ion-color-success-shade: #b4c95c;
+  --ion-color-success-tint: #d1e67a;
+
+  --ion-color-warning: #ffe36e;      /* παστέλ κίτρινο */
+  --ion-color-warning-rgb: 255,227,110;
+  --ion-color-warning-contrast: #414444;
+  --ion-color-warning-contrast-rgb: 65,68,68;
+  --ion-color-warning-shade: #e0c85f;
+  --ion-color-warning-tint: #ffe77e;
+
+  --ion-color-danger: #e899a0;       /* παστέλ ροζ */
+  --ion-color-danger-rgb: 232,153,160;
+  --ion-color-danger-contrast: #414444;
+  --ion-color-danger-contrast-rgb: 65,68,68;
+  --ion-color-danger-shade: #cc868c;
+  --ion-color-danger-tint: #eca4ad;
+
+  --ion-color-dark: #414444;         /* σκούρο γκρι */
+  --ion-color-dark-rgb: 65,68,68;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255,255,255;
+  --ion-color-dark-shade: #393c3c;
+  --ion-color-dark-tint: #555757;
+
+  --ion-color-medium: #bfb9ff;       /* παστέλ μπλε-μοβ */
+  --ion-color-medium-rgb: 191,185,255;
+  --ion-color-medium-contrast: #414444;
+  --ion-color-medium-contrast-rgb: 65,68,68;
+  --ion-color-medium-shade: #a9a3e0;
+  --ion-color-medium-tint: #c7c2ff;
+
+  --ion-color-light: #ffffff;        /* λευκό */
+  --ion-color-light-rgb: 255,255,255;
+  --ion-color-light-contrast: #414444;
+  --ion-color-light-contrast-rgb: 65,68,68;
+  --ion-color-light-shade: #e0e0e0;
+  --ion-color-light-tint: #ffffff;
+
+  /* Extra palette (custom) */
+  --ion-color-mint: #a5e8d0;         /* παστέλ mint */
+  --ion-color-peach: #ffc68d;        /* ροδακινί */
+  --ion-color-orange: #ffb659;       /* παστέλ πορτοκαλί */
+  --ion-color-soft-pink: #f4bccc;    /* απαλό ροζ */
+}

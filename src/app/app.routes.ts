@@ -11,6 +11,10 @@ export const routes: Routes = [
     children: chaptersRoutes,
   },
   {
+    path: 'leaderboards',
+    loadComponent: () => import('./leaderboards/leaderboards.component').then((m) => m.LeaderboardsComponent),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

@@ -8,7 +8,7 @@ import { HeaderComponent } from "../shared/header/header.component";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonCardSubtitle, IonSearchbar, IonLabel, IonItem, IonList, IonButton, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonRow, IonCol, IonGrid, IonButtons, IonHeader, IonToolbar, IonTitle, IonContent, IonMenuButton, HeaderComponent],
+  imports: [IonSearchbar, IonLabel, IonItem, IonList, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonRow, IonCol, IonGrid, IonContent, HeaderComponent],
   providers: [ModalController]
 })
 export class HomePage {
@@ -17,6 +17,8 @@ export class HomePage {
   async openChapterModal() {
     const modal = await this.modalCtrl.create({
       component: ChapterModalComponent, // Replace with your actual modal component
+      initialBreakpoint: 0.7, // Adjust the initial size of the modal
+      breakpoints: [0, 0.7, 1], // Define the breakpoints for the modal
     });
     return await modal.present();
   }

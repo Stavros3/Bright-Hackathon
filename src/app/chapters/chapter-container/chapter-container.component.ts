@@ -7,7 +7,7 @@ import { HeaderComponent } from "../../shared/header/header.component";
   templateUrl: './chapter-container.component.html',
   styleUrls: ['./chapter-container.component.scss'],
   standalone: true,
-  imports: [IonTitle, IonToolbar, IonHeader, IonRow, IonCol, IonGrid, IonRouterOutlet, IonContent, HeaderComponent]
+  imports: [IonRow, IonCol, IonGrid, IonContent, HeaderComponent]
 })
 export class ChapterContainerComponent implements OnInit {
 

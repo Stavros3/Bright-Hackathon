@@ -1,5 +1,6 @@
 <app-header title="Ο ΗΡΑΚΛΗΣ - Quiz"></app-header>
 <ion-content [fullscreen]="true">
+  <div id="container">
   <ion-grid>
     <ion-row *ngIf="!quizCompleted">
       <ion-col size="12">
@@ -32,14 +33,16 @@
     <ion-row *ngIf="quizCompleted">
       <ion-col size="12" class="ion-text-center">
         <h2>Κείμενο για το κεφάλαιο του Ηρακλή.</h2>
-        <ion-button shape="round" routerLink="/next-chapter">Επόμενο</ion-button>
+        <ion-button fill="outline" shape="round" routerLink="/next-chapter">Επόμενο</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
+</div>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="openAiChatModal()">
       <ion-icon src="assets/idea.svg"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<app-footer [number]="3"></app-footer>

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { IonItem, IonHeader, IonLabel, IonList, IonContent, IonTitle, IonToolbar, IonButtons, IonButton, IonListHeader } from "@ionic/angular/standalone";
+import { IonItem, IonHeader, IonLabel, IonList, IonContent, IonTitle, IonToolbar, IonButtons, IonButton, IonListHeader, IonIcon } from "@ionic/angular/standalone";
 import { ChapterInterface, chapters as sharedChapters } from '../shared/models/chapters.model';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './chapter-modal.component.html',
   styleUrls: ['./chapter-modal.component.scss'],
   standalone: true,
-  imports: [IonListHeader, IonButton, IonButtons, IonToolbar, IonTitle, IonContent, IonList, IonLabel, IonHeader, IonItem, CommonModule ], // Add any necessary imports here, such as Ionic components
+  imports: [IonListHeader, IonButton, IonButtons, IonToolbar, IonTitle, IonContent, IonList, IonLabel, IonHeader, IonItem, CommonModule], // Add any necessary imports here, such as Ionic components
   providers: [ModalController]
 })
 export class ChapterModalComponent implements OnInit {

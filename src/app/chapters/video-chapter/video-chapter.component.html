@@ -1,5 +1,7 @@
 <app-header title="Ο ΗΡΑΚΛΗΣ"></app-header>
 <ion-content [fullscreen]="true">
+<div id="container">
+
 
   <ion-grid>
     <ion-row>
@@ -11,11 +13,9 @@
           </ion-card-header>
           <ion-card-content>
 
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium est minima temporibus, voluptatem
-              odit vitae ratione, molestiae at quaerat dignissimos assumenda, ab illum facilis magni alias. Eum
-              temporibus porro dolorem?</p>
+            <p>Δες το Βίντεο για να μάθεις για τον Ηρακλή</p>
           </ion-card-content>
-          <video width="100%" controls>
+          <video width="80%" controls>
             <source src="assets/video.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -28,21 +28,26 @@
                 </ion-row> -->
               <ion-row>
                 <ion-col class="ion-text-center">
-                  <ion-button (click)="goToSpeedText()" shape="round">Επόμενο</ion-button>
+                  <ion-button fill="outline" (click)="goToSpeedText()" shape="round">Επόμενο</ion-button>
                 </ion-col>
               </ion-row>
             </ion-grid>
+          </ion-card-content>
+          <ion-card-content *ngIf="hasViewedVideo" class="ion-text-center">
+            <ion-label color="success">Έχετε παρακολουθήσει ολόκληρο το βίντεο!</ion-label>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 
+  </div>
+
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="openAiChatModal()">
-      <ion-icon src="assets/idea.svg"></ion-icon>
+      <ion-icon size="large" src="assets/idea.svg"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
 
-<app-footer></app-footer>
+<app-footer [number]="1"></app-footer>

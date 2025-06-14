@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { IonContent, IonGrid, IonRow, IonCol, IonButton, IonCard, IonIcon, IonCardContent, IonInput, IonFab, IonFabButton, ModalController } from "@ionic/angular/standalone";
 import { FooterComponent } from "../../shared/footer/footer.component";
 import { HeaderComponent } from "../../shared/header/header.component";
@@ -12,9 +12,8 @@ import { AiChatComponent } from 'src/app/ai-chat/ai-chat.component';
   templateUrl: './speed-text-chapter.component.html',
   styleUrls: ['./speed-text-chapter.component.scss'],
   imports: [IonFabButton, IonFab,
-    IonInput, IonCardContent, IonIcon, IonCard, IonButton, IonCol, IonRow, IonGrid, IonContent,
-    FooterComponent, HeaderComponent, CommonModule, ReactiveFormsModule
-  ]
+    IonCardContent, IonIcon, IonCard, IonButton, IonCol, IonRow, IonGrid, IonContent,
+    FooterComponent, HeaderComponent, CommonModule, ReactiveFormsModule]
 })
 export class SpeedTextChapterComponent implements OnInit {
 
@@ -27,20 +26,30 @@ export class SpeedTextChapterComponent implements OnInit {
 Ο Ηρακλής ήταν πανύψηλος, πολύ δυνατός, ατρόμητος και καλόκαρδος. Βοηθούσε πάντα τους ανθρώπους και έμεινε στην ιστορία για τα μεγάλα κατορθώματά του.`;
   words: string[] = [];
   currentWordIndex: number = 0;
-  currentWord: string = '';
+  currentWords: string = '';
   isPlaying: boolean = false;
   speechSynthesisUtterance: SpeechSynthesisUtterance | null = null;
-  wordForm = new FormGroup({
-    word: new FormControl({ value: '', disabled: false })
-  });
   selectedVoice: SpeechSynthesisVoice | null = null;
+  wordStartIndices: number[] = []; // Store the start index of each word
+  sentences: string[] = [];
+  sentenceStartIndices: number[] = [];
+  currentSentenceIndex: number = 0;
+  currentSentence: string = '';
 
-  constructor(private router: Router, private modalController: ModalController) { }
+  constructor(
+    private router: Router,
+    private modalController: ModalController,
+    private cdr: ChangeDetectorRef // Add this
+  ) { }
 
   ngOnInit() {
     this.words = this.paragraph.split(/\s+/);
-    this.currentWord = this.words[0] || '';
-    this.wordForm.get('word')?.setValue(this.currentWord);
+    this.computeWordStartIndices();
+    this.currentWordIndex = 0;
+    this.currentWords = this.getCurrentWords();
+    this.splitSentences();
+    this.currentSentenceIndex = 0;
+    this.currentSentence = this.sentences[0] || '';
 
     // Load voices and select a Greek voice if available
     window.speechSynthesis.onvoiceschanged = () => {
@@ -49,18 +58,42 @@ export class SpeedTextChapterComponent implements OnInit {
     this.setVoice();
   }
 
+  computeWordStartIndices() {
+    this.wordStartIndices = [];
+    let regex = /\S+/g;
+    let match;
+    while ((match = regex.exec(this.paragraph)) !== null) {
+      this.wordStartIndices.push(match.index);
+    }
+  }
+
+  getCurrentWords(): string {
+    return this.words.slice(this.currentWordIndex, this.currentWordIndex + 4).join(' ');
+  }
+
   setVoice() {
     const voices = window.speechSynthesis.getVoices();
     // Try to find a Greek voice, fallback to default if not found
     this.selectedVoice = voices.find(v => v.lang.startsWith('el')) || voices[0] || null;
   }
 
+  splitSentences() {
+    // Split on . ! ; or ; or ; or ; (Greek and Latin), keeping the delimiter
+    const regex = /[^.!?;;·]+[.!?;;·]+|[^.!?;;·]+$/g;
+    this.sentences = [];
+    this.sentenceStartIndices = [];
+    let match;
+    while ((match = regex.exec(this.paragraph)) !== null) {
+      this.sentences.push(match[0].trim());
+      this.sentenceStartIndices.push(match.index);
+    }
+  }
+
   start() {
     if (this.isPlaying) return;
     this.isPlaying = true;
-    this.currentWordIndex = 0;
-    this.currentWord = this.words[0] || '';
-    this.wordForm.get('word')?.setValue(this.currentWord);
+    this.currentSentenceIndex = 0;
+    this.currentSentence = this.sentences[0] || '';
     this.speakParagraph();
   }
 
@@ -76,8 +109,8 @@ export class SpeedTextChapterComponent implements OnInit {
     if ('speechSynthesis' in window) {
       this.speechSynthesisUtterance = new SpeechSynthesisUtterance(this.paragraph);
       this.speechSynthesisUtterance.lang = 'el-GR';
-      this.speechSynthesisUtterance.rate = 1.1;
-      this.speechSynthesisUtterance.volume = 0.6; // Set volume (0.0 to 1.0)
+      this.speechSynthesisUtterance.rate = 0.8; // Slow down for sentence display
+      this.speechSynthesisUtterance.volume = 0.6;
       if (this.selectedVoice) {
         this.speechSynthesisUtterance.voice = this.selectedVoice;
       }
@@ -85,16 +118,18 @@ export class SpeedTextChapterComponent implements OnInit {
       this.speechSynthesisUtterance.onboundary = (event: SpeechSynthesisEvent) => {
         if (!this.isPlaying) return;
         if (event.name === 'word') {
-          const charIndex = event.charIndex;
-          let acc = 0;
-          for (let i = 0; i < this.words.length; i++) {
-            acc += this.words[i].length + 1;
-            if (charIndex < acc) {
-              this.currentWordIndex = i;
-              this.currentWord = this.words[i];
-              this.wordForm.get('word')?.setValue(this.currentWord);
+          // Find the sentence whose start index is closest to (but not greater than) charIndex
+          let idx = 0;
+          for (let i = 0; i < this.sentenceStartIndices.length; i++) {
+            if (this.sentenceStartIndices[i] > event.charIndex) {
               break;
             }
+            idx = i;
+          }
+          if (this.currentSentenceIndex !== idx) {
+            this.currentSentenceIndex = idx;
+            this.currentSentence = this.sentences[idx] || '';
+            this.cdr.detectChanges();
           }
         }
       };

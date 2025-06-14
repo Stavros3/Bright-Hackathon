@@ -6,7 +6,7 @@ import { IonHeader, IonToolbar, IonButtons, IonTitle, IonMenuButton } from "@ion
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [IonTitle, IonButtons, IonToolbar, IonHeader, IonMenuButton]
+  imports: [IonButtons, IonToolbar, IonHeader, IonMenuButton]
 })
 export class HeaderComponent implements OnInit {
   @Input() title: string = 'Bright';

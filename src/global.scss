@@ -35,3 +35,50 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 @import "@ionic/angular/css/palettes/dark.class.css";
 /* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+ion-fab-button {
+  --background: var(--ion-color-primary);
+}
+
+/* Font Faces */
+@font-face {
+  font-family: 'Mynerve';
+  src: url('assets/fonts/Mynerve-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply Mynerve to titles */
+ion-card-title,
+ion-title,
+h1, h2, h3, h4, h5, h6,
+.title {
+  font-family: 'Mynerve', cursive !important;
+}
+
+/* Apply Roboto to other texts */
+p,
+ion-label,
+body,
+.ion-text,
+span,
+div,
+ion-card-content,
+ion-card-subtitle {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+
+/* ion-icon {
+  font-size: 24px;
+
+
+} */

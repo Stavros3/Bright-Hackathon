@@ -13,6 +13,7 @@
       {{ chapter.header }}
     </ion-list-header>
     <ion-item *ngIf="chapter.title" (click)="chapter.clickable ? selectChapter(chapter) : null">
+      <img slot="start" *ngIf="chapter.number" [src]="'assets/numbers/' + (chapter.number) + '.svg'" style="width:24px;height:24px;object-fit:contain;display:block;" />
       <ion-label>
         {{ chapter.title }}
       </ion-label>
