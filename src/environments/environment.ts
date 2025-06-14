@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   openai: {
-    apiKey: 'add your api key here', // Replace with your actual API key
+    apiKey: 'tt', // Replace with your actual API key
   }
 };
 
