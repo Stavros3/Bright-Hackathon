@@ -41,10 +41,11 @@
         <p>Ολοκληρώσατε το κεφάλαιο!</p>
       </ion-col>
     </ion-row>
-    <ion-row class="ion-text-center">
+    <ion-row *ngIf="quizCompleted">
       <ion-col size="12" class="ion-text-center">
-        <ion-button fill="clear" shape="round" (click)="goBack()" size="large">
-          <ion-icon slot="icon-only" size="large" src="assets/back.svg"></ion-icon>
+        <ion-button expand="block" color="primary" [routerLink]="['/home']"
+          >
+          Πηγαινε στην αρχική σελίδα
         </ion-button>
       </ion-col>
     </ion-row>
