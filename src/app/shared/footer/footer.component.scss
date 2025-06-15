@@ -1,17 +1,5 @@
-ion-range {
-  --knob-background: transparent;
-  --knob-box-shadow: none;
-  --knob-size: 32px; // adjust size as needed
-
-  ::ng-deep .range-knob {
-    background: transparent !important;
-    box-shadow: none !important;
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 50% !important;
-    background-image: url('/assets/bright_transparent_bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.center-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -13,11 +13,11 @@
           </ion-card-header>
           <ion-card-content>
             <div style="display: flex; align-items: center;">
-              <img src="assets/sheep.png" alt="Sheep" style="height: 40px; margin-right: 10px;">
+              <!-- <img src="assets/sheep.png" alt="Sheep" style="height: 40px; margin-right: 10px;"> -->
               <p style="margin: 0; font-size: 20px;">Δες το Βίντεο για να μάθεις για τον Ηρακλή</p>
             </div>
           </ion-card-content>
-          <video width="80%" controls>
+          <video width="40%" controls>
             <source src="assets/video.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -30,13 +30,15 @@
                 </ion-row> -->
               <ion-row>
                 <ion-col class="ion-text-center">
-                  <ion-button fill="outline" (click)="goToSpeedText()" shape="round">Επόμενο</ion-button>
+                  <ion-button fill="clear" shape="round" size="large" (click)="goBack()" size="large">
+                    <ion-icon slot="icon-only" size="large" src="assets/back.svg"></ion-icon>
+                  </ion-button>
+                  <ion-button fill="clear" shape="round" size="large" (click)="goToSpeedText()" size="large">
+                    <ion-icon slot="icon-only" size="large" src="assets/next.svg"></ion-icon>
+                  </ion-button>
                 </ion-col>
               </ion-row>
             </ion-grid>
-          </ion-card-content>
-          <ion-card-content *ngIf="hasViewedVideo" class="ion-text-center">
-            <ion-label color="success">Έχετε παρακολουθήσει ολόκληρο το βίντεο!</ion-label>
           </ion-card-content>
         </ion-card>
       </ion-col>

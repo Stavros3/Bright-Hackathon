@@ -11,6 +11,16 @@
         </ion-card>
       </ion-col>
     </ion-row> -->
+    <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <h1>ΚΕΦΑΛΑΙΟ ΤΑΧΥΤΗΤΑΣ</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <p>Διάβασε το κείμενο και πάτησε το κουμπί για να ξεκινήσεις.</p>
+        </ion-col>
+    </ion-row>
       <ion-row>
         <ion-col size="12" class="ion-text-center">
           <ion-card>
@@ -27,8 +37,12 @@
       </ion-row>
       <ion-row>
         <ion-col class="ion-text-center">
-          <ion-button color="primary" (click)="start()" [disabled]="isPlaying">▶️ Έναρξη</ion-button>
-          <ion-button color="danger" (click)="stop()" [disabled]="!isPlaying">⏹️ Σταμάτημα</ion-button>
+          <ion-button size="large" color="primary" (click)="start()" [disabled]="isPlaying">
+            <ion-icon slot="icon-only" size="large" [src]="'assets/play-button.svg'"></ion-icon>
+          </ion-button>
+          <ion-button size="large" color="danger" (click)="stop()" [disabled]="!isPlaying">
+            <ion-icon slot="icon-only" size="large" [src]="'assets/stop-button.svg'"></ion-icon>
+          </ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -36,7 +50,12 @@
           <ion-grid>
             <ion-row>
               <ion-col class="ion-text-center">
-                <ion-button fill="outline" (click)="goToQuiz()" shape="round">Επόμενο</ion-button>
+                <ion-button fill="clear" size="large" shape="round" (click)="goBack()" size="large">
+                  <ion-icon slot="icon-only" size="large" src="assets/back.svg"></ion-icon>
+                </ion-button>
+                <ion-button fill="clear" size="large" shape="round" (click)="goToQuiz()" size="large">
+                  <ion-icon slot="icon-only" size="large" src="assets/next.svg"></ion-icon>
+                </ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>

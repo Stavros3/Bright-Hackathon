@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AiChatComponent } from 'src/app/ai-chat/ai-chat.component';
+import { SuccessModalComponent } from '../../success-modal/success-modal.component';
 
 @Component({
   selector: 'app-speed-text-chapter',
@@ -137,19 +138,35 @@ export class SpeedTextChapterComponent implements OnInit {
     }
   }
 
-  goToQuiz() {
+  async goToQuiz() {
     this.stop();
-    this.router.navigate( ['chapter/quiz']);
+    const modal = await this.modalController.create({
+      component: SuccessModalComponent,
+      cssClass: 'success-modal',
+      componentProps: {
+        number: 60
+      },
+      backdropDismiss: false
+    });
+    await modal.present();
+    setTimeout(() => {
+      modal.dismiss();
+      this.router.navigate(['chapter/quiz']);
+    }, 3000);
   }
 
-    async openAiChatModal() {
-      const modal = await this.modalController.create({
-        component: AiChatComponent,
-        cssClass: 'ai-chat-modal',
-        componentProps: {
-          aiPrompt: 'You are history teacher and you know everything about Hercules. You are answering questions based on Hercules only. You are not allowed to answer any other question. If the user asks something else, you should say "Λυπάμαι, δεν μπορώ να βοηθήσω με αυτό." Your aswers should be on Greek only. You speak simple and your targeting is for childrens with ADHD and Dyslexia. Your response should be on html format.',
-        }
-      });
-      await modal.present();
-    }
+  goBack() {
+    this.router.navigate(['chapter/video']);
+  }
+
+  async openAiChatModal() {
+    const modal = await this.modalController.create({
+      component: AiChatComponent,
+      cssClass: 'ai-chat-modal',
+      componentProps: {
+        aiPrompt: 'You are history teacher and you know everything about Hercules. You are answering questions based on Hercules only. You are not allowed to answer any other question. If the user asks something else, you should say "Λυπάμαι, δεν μπορώ να βοηθήσω με αυτό." Your aswers should be on Greek only. You speak simple and your targeting is for childrens with ADHD and Dyslexia. Your response should be on html format.',
+      }
+    });
+    await modal.present();
+  }
 }

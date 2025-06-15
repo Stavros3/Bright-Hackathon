@@ -5,6 +5,7 @@ import { FooterComponent } from "../../shared/footer/footer.component";
 import { Router } from '@angular/router';
 import { AiChatComponent } from '../../ai-chat/ai-chat.component';
 import { CommonModule } from '@angular/common';
+import { SuccessModalComponent } from '../../success-modal/success-modal.component';
 
 @Component({
   selector: 'app-video-chapter',
@@ -26,14 +27,19 @@ export class VideoChapterComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     const video: HTMLVideoElement | null = document.querySelector('video');
     if (video) {
-      video.addEventListener('ended', () => {
+      video.addEventListener('ended', async () => {
         this.hasViewedVideo = true;
+        await this.showSuccessModal();
       });
     }
   }
 
   goToSpeedText() {
     this.route.navigate(['chapter/speed-text']);
+  }
+
+  goBack() {
+    this.route.navigate(['/home']);
   }
 
   async openAiChatModal() {
@@ -45,5 +51,20 @@ export class VideoChapterComponent implements OnInit, AfterViewInit {
       }
     });
     await modal.present();
+  }
+
+  async showSuccessModal() {
+    const modal = await this.modalController.create({
+      component: SuccessModalComponent,
+      cssClass: 'success-modal',
+      componentProps: {
+        number: 50
+      },
+      backdropDismiss: false
+    });
+    await modal.present();
+    setTimeout(() => {
+      modal.dismiss();
+    }, 3000);
   }
 }

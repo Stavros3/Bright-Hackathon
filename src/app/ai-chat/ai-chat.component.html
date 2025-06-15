@@ -9,25 +9,42 @@
 <ion-content class="ion-padding">
   <div class="ai-chat-container">
 
-    <div class="messages">
-      <div *ngFor="let msg of messages" [ngClass]="{'user': msg.role === 'user', 'ai': msg.role === 'ai'}">
-        <strong *ngIf="msg.role === 'user'">Εσύ:</strong>
-        <strong *ngIf="msg.role === 'ai'">AI:</strong>
-        <span *ngIf="msg.role === 'user'">{{ msg.content }}</span>
-        <span *ngIf="msg.role === 'ai'" [innerHTML]="msg.content"></span>
+    <!-- Show TrueFalseComponent if game is active -->
+    <ng-container *ngIf="showTrueFalseGame; else chatBlock">
+      <ion-button (click)="exitTrueFalseGame()" color="medium" expand="block" style="margin-bottom:1em;">
+        Έξοδος από το Σωστό/Λάθος
+      </ion-button>
+      <ion-spinner *ngIf="trueFalseLoading"></ion-spinner>
+      <app-true-false
+        *ngIf="!trueFalseLoading"
+        [questions]="trueFalseQuestions">
+      </app-true-false>
+    </ng-container>
+
+    <ng-template #chatBlock>
+      <div class="messages">
+        <div *ngFor="let msg of messages" [ngClass]="{'user': msg.role === 'user', 'ai': msg.role === 'ai'}">
+          <strong *ngIf="msg.role === 'user'">Εσύ:</strong>
+          <strong *ngIf="msg.role === 'ai'">AI:</strong>
+          <span *ngIf="msg.role === 'user'">{{ msg.content }}</span>
+          <span *ngIf="msg.role === 'ai'" [innerHTML]="msg.content"></span>
+        </div>
       </div>
-    </div>
-    <form [formGroup]="form" (ngSubmit)="sendMessage()" class="input-row">
-      <ion-textarea formControlName="userInput" placeholder="Γράψε το μήνυμά σου..." autoGrow></ion-textarea>
-      <ion-button type="submit" [disabled]="loading || !form.value.userInput" shape="round">
-        Αποστολή
-      </ion-button>
-    </form>
-        <div *ngIf="!isGameMode" style="margin-bottom: 1em;">
-      <ion-button expand="block" color="primary" (click)="setGameMode()">
-        Παίξε Παιχνίδια Μυστηρίου
-      </ion-button>
-    </div>
-    <ion-spinner *ngIf="loading"></ion-spinner>
+      <form [formGroup]="form" (ngSubmit)="sendMessage()" class="input-row">
+        <ion-textarea formControlName="userInput" placeholder="Γράψε το μήνυμά σου..." autoGrow></ion-textarea>
+        <ion-button type="submit" [disabled]="loading || !form.value.userInput" shape="round">
+          Αποστολή
+        </ion-button>
+      </form>
+      <div *ngIf="!isGameMode" style="margin-bottom: 1em;">
+        <ion-button expand="block" color="primary" (click)="setGameMode()">
+          Παίξε Παιχνίδια Μυστηρίου
+        </ion-button>
+        <ion-button expand="block" color="secondary" (click)="startTrueFalseGame()">
+          Παίξε Σωστό/Λάθος
+        </ion-button>
+      </div>
+      <ion-spinner *ngIf="loading"></ion-spinner>
+    </ng-template>
   </div>
 </ion-content>

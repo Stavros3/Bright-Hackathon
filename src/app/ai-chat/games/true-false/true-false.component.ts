@@ -1,15 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { IonButton, IonText } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-true-false',
   templateUrl: './true-false.component.html',
-  styleUrls: ['./true-false.component.scss']
+  styleUrls: ['./true-false.component.scss'],
+  imports: [IonText, IonButton, CommonModule],
+  standalone: true
 })
 export class TrueFalseComponent implements OnInit {
+  @Input() questions: { question: string; answer: boolean }[] = [];
+  userAnswers: (boolean | null)[] = [];
+  showResults = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  selectAnswer(idx: number, answer: boolean) {
+    this.userAnswers[idx] = answer;
+  }
+
+  submit() {
+    this.showResults = true;
+  }
+
+  reset() {
+    this.userAnswers = [];
+    this.showResults = false;
+  }
 }

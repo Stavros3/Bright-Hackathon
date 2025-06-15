@@ -1,3 +1,46 @@
-<p>
-  true-false works!
-</p>
+<div *ngIf="questions.length > 0">
+  <form *ngIf="!showResults">
+    <div *ngFor="let q of questions; let i = index" style="margin-bottom:1em;">
+      <div><strong style="padding-bottom: 5px;">Ερώτηση {{i+1}}:</strong> {{q.question}}</div>
+      <ion-button
+        color="success"
+        fill="solid"
+        expand="block"
+        [ngClass]="{'answer-buttons': userAnswers[i] === true}"
+        (click)="selectAnswer(i, true)">
+        Σωστό
+      </ion-button>
+      <ion-button
+        color="danger"
+        fill="solid"
+        expand="block"
+        [ngClass]="{'answer-buttons': userAnswers[i] === false}"
+        (click)="selectAnswer(i, false)">
+        Λάθος
+      </ion-button>
+    </div>
+    <ion-button expand="block" color="primary" (click)="submit()" [disabled]="userAnswers.length !== questions.length || userAnswers.includes(null)">
+      <div style="color:black">
+        ΥΠΟΒΟΛΗ
+      </div>
+    </ion-button>
+  </form>
+  <div *ngIf="showResults">
+    <div *ngFor="let q of questions; let i = index" style="margin-bottom:1em;">
+      <div><strong>Ερώτηση {{i+1}}:</strong> {{q.question}}</div>
+      <div>
+        Η απάντησή σου:
+        <span [ngStyle]="{'color': userAnswers[i] === q.answer ? 'green' : 'red'}">
+          {{userAnswers[i] === true ? 'Σωστό' : 'Λάθος'}}
+        </span>
+        <span *ngIf="userAnswers[i] === q.answer">✔️</span>
+        <span *ngIf="userAnswers[i] !== q.answer">❌</span>
+      </div>
+      <div>Σωστή απάντηση: <strong>{{q.answer ? 'Σωστό' : 'Λάθος'}}</strong></div>
+    </div>
+    <ion-button expand="block" color="secondary" (click)="reset()">Ξαναπαίξε</ion-button>
+  </div>
+</div>
+<div *ngIf="questions.length === 0">
+  <ion-text color="medium">Δεν βρέθηκαν ερωτήσεις.</ion-text>
+</div>

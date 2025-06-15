@@ -2,6 +2,11 @@
 <ion-content [fullscreen]="true">
   <div id="container">
   <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <h1>QUIZ</h1>
+      </ion-col>
+    </ion-row>
     <ion-row *ngIf="!quizCompleted">
       <ion-col size="12">
         <h2>{{ currentQuiz.question }}</h2>
@@ -32,8 +37,15 @@
     </ion-row>
     <ion-row *ngIf="quizCompleted">
       <ion-col size="12" class="ion-text-center">
-        <h2>Κείμενο για το κεφάλαιο του Ηρακλή.</h2>
-        <ion-button fill="outline" shape="round" routerLink="/next-chapter">Επόμενο</ion-button>
+        <h2>Μπράβο!</h2>
+        <p>Ολοκληρώσατε το κεφάλαιο!</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button fill="clear" shape="round" (click)="goBack()" size="large">
+          <ion-icon slot="icon-only" size="large" src="assets/back.svg"></ion-icon>
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

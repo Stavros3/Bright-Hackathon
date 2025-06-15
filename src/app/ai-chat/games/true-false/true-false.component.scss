@@ -1,0 +1,24 @@
+/* ion-button[style*="border: 2px solid black"] {
+  border-radius: 8px !important;
+  box-shadow: 0 0 0 2px black;
+} */
+
+.answer-buttons {
+  --border-radius: 10px;
+  --border-color: #000;
+  --border-style: solid;
+  --border-width: 2px;
+}
+
+.selected-answer {
+  --border-radius: 10px;
+  --border-color: #000;
+  --border-style: solid;
+  --border-width: 2px;
+  box-shadow: 0 0 0 2px #000;
+}
+
+ion-button {
+  padding-top: 5px;
+  padding-bottom: 2px;
+}
