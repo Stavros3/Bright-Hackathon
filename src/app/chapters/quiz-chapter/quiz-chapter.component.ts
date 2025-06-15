@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './quiz-chapter.component.html',
   styleUrls: ['./quiz-chapter.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonFabButton, IonFab, IonText, IonCol, IonRow, IonButton, IonGrid, IonContent, HeaderComponent, CommonModule, FooterComponent, RouterModule],
+  imports: [IonIcon, IonFabButton, IonFab, IonText, IonCol, IonRow, IonButton, IonGrid, IonContent, HeaderComponent, CommonModule, FooterComponent, RouterModule, IonItem],
 })
 export class QuizChapterComponent implements OnInit {
   quizList: QuizInterface[] = quizzes;

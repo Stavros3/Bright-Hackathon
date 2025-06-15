@@ -13,14 +13,15 @@ export class TrueFalseComponent implements OnInit {
   @Input() questions: { question: string; answer: boolean }[] = [];
   userAnswers: (boolean | null)[] = [];
   showResults = false;
+  currentQuestionIndex = 0;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  selectAnswer(idx: number, answer: boolean) {
-    this.userAnswers[idx] = answer;
+  selectAnswer(answer: boolean) {
+    this.userAnswers[this.currentQuestionIndex] = answer;
   }
 
   submit() {
@@ -30,5 +31,13 @@ export class TrueFalseComponent implements OnInit {
   reset() {
     this.userAnswers = [];
     this.showResults = false;
+  }
+
+  nextQuestion() {
+    if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.currentQuestionIndex++;
+    } else {
+      this.submit();
+    }
   }
 }

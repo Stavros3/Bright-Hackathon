@@ -13,4 +13,8 @@ export class SuccessModalComponent implements OnInit {
   ngOnInit() {
   }
 
+    ionViewDidEnter() {
+    const audio = new Audio('assets/bee.m4a');
+    audio.play();
+  }
 }

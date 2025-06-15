@@ -1,29 +1,31 @@
 <div *ngIf="questions.length > 0">
   <form *ngIf="!showResults">
-    <div *ngFor="let q of questions; let i = index" style="margin-bottom:1em;">
-      <div><strong style="padding-bottom: 5px;">Ερώτηση {{i+1}}:</strong> {{q.question}}</div>
+    <div *ngIf="questions[currentQuestionIndex]">
+      <div>
+        <strong>Ερώτηση {{currentQuestionIndex + 1}}:</strong> {{questions[currentQuestionIndex].question}}
+      </div>
       <ion-button
         color="success"
         fill="solid"
         expand="block"
-        [ngClass]="{'answer-buttons': userAnswers[i] === true}"
-        (click)="selectAnswer(i, true)">
+        [ngClass]="{'answer-buttons': userAnswers[currentQuestionIndex] === true}"
+        (click)="selectAnswer(true)">
         Σωστό
       </ion-button>
       <ion-button
         color="danger"
         fill="solid"
         expand="block"
-        [ngClass]="{'answer-buttons': userAnswers[i] === false}"
-        (click)="selectAnswer(i, false)">
+        [ngClass]="{'answer-buttons': userAnswers[currentQuestionIndex] === false}"
+        (click)="selectAnswer(false)">
         Λάθος
       </ion-button>
+      <ion-button expand="block" color="primary" (click)="nextQuestion()">
+        <div style="color:black">
+          ΕΠΟΜΕΝΟ
+        </div>
+      </ion-button>
     </div>
-    <ion-button expand="block" color="primary" (click)="submit()" [disabled]="userAnswers.length !== questions.length || userAnswers.includes(null)">
-      <div style="color:black">
-        ΥΠΟΒΟΛΗ
-      </div>
-    </ion-button>
   </form>
   <div *ngIf="showResults">
     <div *ngFor="let q of questions; let i = index" style="margin-bottom:1em;">
