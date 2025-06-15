@@ -15,7 +15,7 @@ export const quizzes: QuizInterface[] = [
   },
   {
     id: 2,
-    question: "Πόσα άθλα έπρεπε να ολοκληρώσει ο Ηρακλής;",
+    question: "Πόσους άθλους έπρεπε να ολοκληρώσει ο Ηρακλής;",
     options: ["10", "12", "8", "15"],
     answer: "12"
   },

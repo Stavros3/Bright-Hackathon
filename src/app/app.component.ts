@@ -17,7 +17,7 @@ export class AppComponent {
     addIcons({ settingsOutline, chevronUpCircle });
     setTimeout(() => {
       this.showLoader = false;
-    }, 3000);
+    }, 2000);
   }
 
 
